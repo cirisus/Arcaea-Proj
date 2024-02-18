@@ -1,0 +1,359 @@
+[[module css]]
+@import url(http://arcaea.wikidot.com/theme:arcaea/code/1);
+@import url('http://arcaea.wikidot.com/component:root/code/1');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@500&display=swap');
+#header {
+    height: calc(var(--topline-height) * 5);
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 1fr;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr repeat(2, 0.67fr) 0.66fr 1fr;
+    gap: 0;
+}
+#login-status { grid-area: 1 / 3 / 2 / 5; }
+.username { grid-area: 1 / 2 / 2 / 4; }
+.userkarma { grid-area: 1 / 4 / 2 / 5; }
+.open-menu { grid-area: 1 / 1 / 2 / 2; }
+#search-top-box { grid-area: 1 / 5 / 2 / 7; }
+#top-bar {
+    grid-area: 2 / 1 / 5 / 7;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+#header h1 {
+    grid-area: 2 / 2 / 4 / 6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#header :is(h1,h2) span {
+    font-size: 0;
+}
+#header h1 span:after {
+    content: "Arcaea";
+    font-size: 3.75rem;
+    font-family: 'Kings_Gambit', serif;
+    text-transform: uppercase;
+}
+#header h2 span:after {
+    content: "歪んだ道の果て、輝きの終わり。";
+    font-size: 1.5rem;
+    font-family: 'Latienne_Pro', serif;
+    text-transform: uppercase;
+}
+#header h2 {
+    grid-area: 3 / 2 / 5 / 6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* AVATAR */
+#login-status > * {
+    user-select: text;
+    font-size: .875rem;
+}
+#login-status {
+    position: fixed;
+    right: 50%;
+    left: auto;
+    top: 0;
+    max-width: 100%;
+    font-size: 0;
+    z-index: 2;
+    width: 3rem;
+    float: right;
+    height: 3rem;
+    transform: translateY(.75rem);
+}
+#login-status::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--user-button-width);
+    height: 0;
+    pointer-events: auto;
+    cursor: pointer;
+    background-color: #000;
+    z-index: 1;
+    transition: height .2s linear;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+}
+
+#login-status span.printuser {
+    display: contents;
+    font-size: 1.5rem;
+    user-select: none;
+    pointer-events: none;
+    font-family: 'Geo_Sans', sans-serif;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 2px white;
+}
+
+#login-status span.printuser > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: 0 0;
+    width: 140%;
+    height: 140%;
+    pointer-events: auto;
+    z-index: 2;
+    margin: 0;
+    transform: rotate(45deg) translate(calc(110px - .75rem), calc(-110px - .75rem));
+    outline: 2px solid rgb(var(--tairitsu-primary));
+    outline-offset: -2.5px;
+    border-radius: 0 0 2px 0;
+    box-sizing: border-box;
+    box-shadow: 0 0 6px 0px rgb(var(--tairitsu-primary)),inset 0 0 6px 1px rgb(var(--tairitsu-primary));
+}
+#login-status span.printuser > a img {
+    background-image: none !important;
+    padding: 0;
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    padding-right: 0;
+    transform: rotate(-45deg) scale(1.3);
+    -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+a#account-topbutton, a#my-account {
+    display: none;
+}
+div#account-options {
+    width: calc(3rem * 1.4);
+    height: calc(3rem * 1.4);
+    position: absolute;
+    inset-block-start: 64%;
+    right: unset;
+    inset-inline-end: -225%;
+    display: block !important;
+    transform: rotate(45deg);
+    border: 1px solid #d9d9d980;
+    background: rgba(255,255,255,0.5);
+    box-shadow: 0 0 5px 0 rgb(var(--tairitsu-primary));
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+div#account-options:before {
+    position: absolute;
+    right: 0;
+    top: calc(50% - 2.5px);
+    content: "OPTIONS";
+    transform: rotate(-45deg);
+    display: flex;
+    height: 5px;
+    width: 100%;
+    font-family: 'exo',sans-serif !important;
+    color: rgb(var(--tairitsu-primary),.5);
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+    text-shadow: 0 0 1px rgb(var(--tairitsu-third)),0 0 1px rgb(var(--tairitsu-third)),0 0 1px rgb(var(--tairitsu-third)),0 0 1px rgb(var(--tairitsu-third)),0 0 1px rgb(var(--tairitsu-third));
+    transition: all .25s linear
+}
+div#account-options:has(a:hover):before {
+    color: rgb(var(--hikari-primary),.75);
+    text-shadow: 0 0 1px rgb(var(--hikari-third)),0 0 1px rgb(var(--hikari-third)),0 0 1px rgb(var(--hikari-third)),0 0 1px rgb(var(--hikari-third)),0 0 1px rgb(var(--hikari-third));
+    transition: all .25s linear
+}
+#account-options,:where(#login-status)>:is(.login-status-create-account,.login-status-sign-in) {
+    filter: opacity(0) blur(20px);
+    transform: rotate(45deg) scale(1.5);
+    transition: all .2s linear
+}
+
+:where(#login-status):is(:hover,:focus-within)>:is(#account-options,.login-status-create-account,.login-status-sign-in) {
+    filter: opacity(1) blur(0);
+    transform: rotate(45deg) scale(1);
+    transition: all .2s linear
+}
+div#account-options>ul {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0 4px;
+    transform: rotate(-45deg);
+    height: -webkit-fill-available;
+}
+
+div#account-options>ul>li {
+    display: contents
+}
+div#account-options>ul>li>a {
+    display: flex;
+    height: 1.5rem;
+    width: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    padding: 0;
+    position: relative;
+    text-decoration: none;
+    text-shadow: none;
+    color: #000;
+    font-size: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: .2s all ease-out;
+}
+#account-options li a:hover {
+    filter: brightness(1.5);
+    background-color: transparent;
+    transition: all .2s linear;
+}
+div#account-options>ul:has(a:hover) li a:not(:hover) {
+    opacity: 0.5;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+#account-options li:nth-child(1) a {
+    transform: translate(7px,3px);
+}
+#account-options li:nth-child(1) a:hover {
+    transform: translate(7px,3px) scale(1.15);
+}
+#account-options li:nth-child(3) a {
+    transform: translate(-7px,3px);
+}
+#account-options li:nth-child(3) a:hover {
+    transform: translate(-7px,3px) scale(1.15);
+}
+#account-options li:nth-child(4) a {
+    transform: translate(7px,-3px);
+}
+#account-options li:nth-child(4) a:hover {
+    transform: translate(7px,-3px) scale(1.15);
+}
+#account-options li:nth-child(6) a {
+    transform: translate(-7px,-3px);
+}
+#account-options li:nth-child(6) a:hover {
+    transform: translate(-7px,-3px) scale(1.15);
+}
+#account-options li:nth-child(2) a {
+    transform: translateY(-55%)
+}
+#account-options li:nth-child(2) a:hover {
+    transform: translateY(-55%) scale(1.15);
+}
+#account-options li:nth-child(5) a {
+    transform: translateY(55%)
+}
+#account-options li:nth-child(5) a:hover {
+    transform: translateY(55%) scale(1.15);
+}
+#account-options li a[href*="account/activity"] {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 325.27 325.27'%3E%3Cdefs%3E%3Cstyle%3E .cls-1 %7B fill: none; stroke: %2334333d; stroke-miterlimit: 10; stroke-width: 14px; %7D .cls-2 %7B fill: %23a61c65; %7D .cls-3 %7B fill: %234a4298; %7D .cls-4 %7B fill: %237d2a83; %7D .cls-5 %7B fill: %234f3e62; %7D %3C/style%3E%3C/defs%3E%3Crect class='cls-1' x='54.63' y='54.63' width='216' height='216' transform='translate(162.63 -67.37) rotate(45)'/%3E%3Cpolygon class='cls-2' points='162.63 125.78 184.99 148.14 233.5 99.63 162.63 28.77 91.77 99.63 140.28 148.14 162.63 125.78'/%3E%3Crect class='cls-5' x='89.93' y='148.6' width='28.06' height='28.06' transform='translate(-84.55 121.14) rotate(-45)'/%3E%3Crect class='cls-5' x='207.28' y='148.6' width='28.06' height='28.06' transform='translate(-50.18 204.13) rotate(-45)'/%3E%3Cpolygon class='cls-3' points='162.67 198.51 140.31 176.15 91.81 224.66 162.67 295.52 233.54 224.66 185.03 176.15 162.67 198.51'/%3E%3Crect class='cls-4' x='142.59' y='142.59' width='40.09' height='40.09' transform='translate(162.63 -67.37) rotate(45)'/%3E%3Crect class='cls-5' x='253.35' y='154.5' width='16.04' height='16.04' transform='translate(-38.37 232.41) rotate(-45)'/%3E%3Crect class='cls-5' x='55' y='154.5' width='16.04' height='16.04' transform='translate(-96.46 92.16) rotate(-45)'/%3E%3C/svg%3E");
+}
+#account-options li a[href*="account/messages"] {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220.62 220.62'%3E%3Cdefs%3E%3Cstyle%3E .cls-1 %7B fill: none; stroke: %2334333d; stroke-miterlimit: 10; stroke-width: 12px; %7D %3C/style%3E%3C/defs%3E%3Cpolyline class='cls-1' points='59.4 65.31 110.31 14.4 161.22 65.31'/%3E%3Cg%3E%3Crect class='cls-1' x='15.62' y='80.99' width='63.64' height='46.54' transform='translate(-59.83 64.08) rotate(-45)'/%3E%3Crect class='cls-1' x='149.9' y='72.44' width='46.54' height='63.64' transform='translate(-23 152.99) rotate(-45)'/%3E%3Cpolygon class='cls-1' points='110.31 8.49 53.49 65.31 86.4 98.22 110.31 122.13 134.22 98.22 167.13 65.31 110.31 8.49'/%3E%3Cpolygon class='cls-1' points='110.31 122.13 86.4 98.22 41.4 143.22 110.31 212.13 179.22 143.22 134.22 98.22 110.31 122.13'/%3E%3C/g%3E%3C/svg%3E");
+}
+#account-options li a[href*="account/sites"] {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='_图层_1' data-name='图层 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 325.27 325.27'%3E%3Cdefs%3E%3Cstyle%3E .cls-1 %7B stroke-width: 14px; %7D .cls-1, .cls-2 %7B fill: none; stroke: %2334343d; stroke-miterlimit: 10; %7D .cls-2 %7B stroke-width: 8px; %7D %3C/style%3E%3C/defs%3E%3Crect class='cls-1' x='54.63' y='54.63' width='216' height='216' transform='translate(-67.37 162.63) rotate(-45)'/%3E%3Crect class='cls-2' x='48.16' y='139.96' width='45.35' height='45.35' transform='translate(-94.25 97.72) rotate(-45)'/%3E%3Crect class='cls-2' x='186.46' y='93.86' width='45.35' height='45.35' transform='translate(-21.15 182.01) rotate(-45)'/%3E%3Crect class='cls-2' x='94.26' y='93.86' width='45.35' height='45.35' transform='translate(-48.15 116.82) rotate(-45)'/%3E%3Crect class='cls-2' x='140.36' y='139.96' width='45.35' height='45.35' transform='translate(-67.25 162.92) rotate(-45)'/%3E%3Crect class='cls-2' x='186.46' y='186.06' width='45.35' height='45.35' transform='translate(-86.34 209.02) rotate(-45)'/%3E%3Crect class='cls-2' x='94.26' y='186.06' width='45.35' height='45.35' transform='translate(-113.35 143.82) rotate(-45)'/%3E%3Crect class='cls-2' x='232.56' y='139.96' width='45.35' height='45.35' transform='translate(-40.24 228.11) rotate(-45)'/%3E%3C/svg%3E");
+}
+#account-options li a[href*="account/settings"] {
+    background-image: url(https://arcaea.lowiro.com/img/partners.f8385dff.svg);
+}
+#account-options li a[href*="account/upgrade"] {
+    background-image: url(https://arcaea.lowiro.com/img/potential.50ac4ece.svg);
+}
+#account-options li a[onclick*="logoutClick"] {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 251.58 217.79'%3E%3Cdefs%3E%3Cstyle%3E .cls-1 %7B fill: none; stroke: %2334333d; stroke-miterlimit: 10; stroke-width: 14px; %7D %3C/style%3E%3C/defs%3E%3Cpolygon class='cls-1' points='180.89 162.89 243.89 108.89 180.89 54.89 234.89 108.89 180.89 162.89'/%3E%3Cpolygon class='cls-1' points='108.89 135.89 81.89 108.89 108.89 81.89 183.72 81.89 108.89 7.07 7.07 108.89 108.89 210.72 183.72 135.89 108.89 135.89'/%3E%3Cpolyline class='cls-1' points='135.89 108.89 108.89 108.89 207.89 108.89'/%3E%3C/svg%3E");
+}
+#login-status a:is(.login-status-create-account,.login-status-sign-in) {
+    display: flex !important;
+    position: absolute !important;
+    inset-inline-end: 0;
+    inset-block-start: 100%;
+    height: 4rem;
+    width: 4rem
+    text-align: center;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    background-color: white !important;
+    color: black !important;
+}
+
+#login-status a.login-status-create-account {
+    inset-inline-end: 2rem
+}
+#login-status>a[href*="account/messages"] {
+    display: inline-flex;
+    position: fixed;
+    user-select: none;
+    width: calc(1.5rem - 1.5px);
+    height: calc(1.5rem - 1.5px);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    background-image: linear-gradient(135deg, rgb(48 40 73) 0%, rgb(48 40 73) 45%, rgb(166 41 88) 100%);
+    border: 1.5px solid;
+    border-image: linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,1) 50%, rgb(227 135 167) 60%, rgba(176,25,77,1) 100%) 1;
+    transform: rotate(45deg);
+    inset-block-start: 60%;
+    inset-inline-end: -350%;
+    z-index: 2;
+    text-decoration: none;
+}
+#login-status>a[href*="account/messages"]:has(strong:empty) {
+    background-image: linear-gradient(135deg, rgb(var(--hikari-primary)) 0%, rgb(var(--hikari-secondary)) 45%, rgb(var(--hikari-third)) 100%);
+    border: 1.5px solid;
+    border-image: linear-gradient(135deg, rgb(79 72 115) 0%, rgb(97 161 170) 50%, rgb(144 210 209) 60%, rgb(159 202 225) 100%) 1;
+}
+#login-status > a > strong {
+    text-decoration: none;
+    animation: none;
+    transform: rotate(-45deg) translate(-10px, -5px);
+    display: flex;
+    font-family: 'exo',sans-serif !important;
+    color: #fff;
+    position: relative;
+    text-shadow: 0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 1.5px rgb(var(--tairitsu-primary)),0 0 2px white;
+}
+#login-status > a > strong:before {
+    content: "PM:\00a0";
+}
+#login-status > a > strong:empty:before {
+    content: "NO\00a0INFO";
+    transform: translate(0px, -3px);
+}
+div#header-extra-div-1 {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    background-image: url(https://arcaea.wdfiles.com/local--files/theme%3Aarcaea/top_bar_bg.png);
+    background-color: transparent;
+    height: 5rem;
+    background-position: top;
+    background-repeat: repeat-x;
+}
+div#header-extra-div-2 {
+    position: fixed;
+    width: calc(564px * 50/74);
+    right: 40vw;
+    display: flex;
+    background-image: url(https://arcaea.wdfiles.com/local--files/theme%3Aarcaea/11.png);
+    background-color: transparent;
+    height: calc(3rem + 2.1px);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 1;
+}
+[[/module]]
